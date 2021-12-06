@@ -64,7 +64,7 @@ https://trybe-starwars.surge.sh/
 
 ### IMPORTANTE
 
-O modelo é para fins de ilustração, para desenvolver o projeto mandatoriamente siga os requisitos apontados no Readme.
+O modelo serve apenas para fins de ilustração. Para desenvolver o projeto, é mandatório que você siga os requisitos apontados no Readme.
 
 ---
 
