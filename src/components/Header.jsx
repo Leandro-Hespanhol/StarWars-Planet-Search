@@ -2,9 +2,14 @@ import React, { useContext } from 'react';
 import PlanetContext from '../context/PlanetContext';
 
 export default function Header() {
-  const { onInputChange, onNumberValueChange, filterByName: { name },
-    onClassifcChange, filteredByClassification,
-    onParamChange, numberValue } = useContext(PlanetContext);
+  const { onInputChange, filterByName: { name },
+    onClassifcChange,
+    columnCompValue, comparisson, filterValues,
+    onButtonFilter, classification } = useContext(PlanetContext);
+  // var person=[{"name":"Billy","age":34}];
+  // var clothing={"name":"Karen","age":35};
+  // console.log(person.concat(clothing));
+  console.log('filterValues', filterValues);
 
   return (
     <header>
@@ -23,50 +28,47 @@ export default function Header() {
       <div>
         <label htmlFor="classificationSelect">
           <select
-            name=""
+            name="column"
             id="classificationSelect"
             data-testid="column-filter"
             onChange={ onClassifcChange }
           >
-            <option value="population">population</option>
-            <option value="orbital_period">orbital_period</option>
-            <option value="diameter">diameter</option>
-            <option value="rotation_period">rotation_period</option>
-            <option value="surface_water">surface_water</option>
+            {classification.map((classOptions) => (
+              <option key={ classOptions } value={ classOptions }>{classOptions}</option>
+            ))}
           </select>
         </label>
         <label htmlFor="rangeSelector">
           <select
-            name=""
+            name="comparison"
             id="rangeSelector"
             data-testid="comparison-filter"
-            onChange={ onParamChange }
+            onChange={ onClassifcChange }
           >
-            <option value="maior que">maior que</option>
-            <option value="menor que">menor que</option>
-            <option value="igual a">igual a</option>
+            {comparisson.map((compOptions) => (
+              <option key={ compOptions }>{compOptions}</option>
+            ))}
           </select>
         </label>
         <label htmlFor="number_filter">
           <input
             type="number"
-            name=""
+            name="value"
             id="number_filter"
             placeholder="valor"
-            value={ numberValue }
+            value={ columnCompValue.value }
             data-testid="value-filter"
-            onChange={ onNumberValueChange }
+            onChange={ onClassifcChange }
           />
         </label>
         <button
           type="button"
-          onClick={ () => filteredByClassification }
+          onClick={ () => onButtonFilter() }
           data-testid="button-filter"
         >
           Filtrar
         </button>
       </div>
-      {console.log(filteredByClassification)}
     </header>
   );
 }

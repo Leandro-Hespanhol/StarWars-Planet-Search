@@ -4,65 +4,88 @@ import PlanetContext from './PlanetContext';
 import FetchAPIPlanets from '../hooks/usePlanetHook';
 
 export default function PlanetProvider({ children }) {
-  const [planets] = FetchAPIPlanets();
+  const [planets, allPlanets, setAllPlanets] = FetchAPIPlanets();
 
   const [nameInput, setNameInput] = useState([planets]);
-  const [classification, setClassification] = useState('population');
-  const [numberValue, setNumberValue] = useState(0);
-  const [paramValue, setParamValue] = useState('maior que');
+  const [classification, setClassification] = useState(
+    ['population', 'orbital_period', 'diameter', 'rotation_period',
+      'surface_water'],
+  );
+
+  const [comparisson, setComparisson] = useState([
+    'maior que', 'menor que', 'igual a',
+  ]);
+
+  const [columnCompValue, setColumnCompValue] = useState({
+    column: 'population',
+    comparison: 'maior que',
+    value: 0,
+  });
 
   const onInputChange = ({ target }) => {
     setNameInput(target.value);
   };
 
   const onClassifcChange = ({ target }) => {
-    setClassification(target.value);
+    const { value, name } = target;
+    setColumnCompValue({
+      ...columnCompValue,
+      [name]: value,
+    });
   };
 
-  const onNumberValueChange = ({ target }) => {
-    setNumberValue(target.value);
-  };
+  // const filteredPlanets = (allPlanets === ''
+  //   ? allPlanets
+  //   : allPlanets.filter((elem) => elem.name.includes(nameInput)));
 
-  const onParamChange = ({ target }) => {
-    setParamValue(target.value);
-  };
-
-  const filteredPlanets = (planets === ''
-    ? planets
-    : planets.filter((elem) => elem.name.includes(nameInput)));
-
-  const filteredByClassification = filteredPlanets.filter((planet) => {
-    switch (paramValue) {
+  const filteredByClassification = allPlanets.filter((planet) => {
+    switch (columnCompValue.comparison) {
     case 'menor que':
-      return Number(planet[classification]) < Number(numberValue);
+      return Number(planet[columnCompValue.column]) < Number(columnCompValue.value);
     case 'maior que':
-      return Number(planet[classification]) > Number(numberValue);
+      return Number(planet[columnCompValue.column]) > Number(columnCompValue.value);
     case 'igual a':
-      return Number(planet[classification]) === Number(numberValue);
+      return Number(planet[columnCompValue.column]) === Number(columnCompValue.value);
     default:
       return [];
     }
   });
 
+  const [filterValues, setFilterValues] = useState({
+    filterByNumericValues: [],
+  });
+
+  function onButtonFilter() {
+    setFilterValues({
+      ...filterValues,
+      filterByNumericValues: [
+        ...filterValues.filterByNumericValues, columnCompValue,
+      ],
+    });
+    setAllPlanets(filteredByClassification);
+    setClassification([
+      ...classification.filter((elem) => elem !== columnCompValue.column),
+    ]);
+  }
+
   const contextValue = {
     planets,
     onInputChange,
-    filteredPlanets,
+    // filteredPlanets,
     onClassifcChange,
     filteredByClassification,
-    onNumberValueChange,
-    onParamChange,
-    numberValue,
+    classification,
+    setClassification,
+    setColumnCompValue,
+    columnCompValue,
+    onButtonFilter,
+    comparisson,
+    setComparisson,
+    filterValues,
+    allPlanets,
     filterByName: {
       name: nameInput,
     },
-    filterByNumericValues: [
-      {
-        column: classification,
-        comparison: paramValue,
-        value: paramValue,
-      },
-    ],
   };
 
   return (
