@@ -4,9 +4,8 @@ import PlanetContext from '../context/PlanetContext';
 export default function Header() {
   const { onInputChange, onNumberValueChange, filterByName: { name },
     onClassifcChange, filteredByClassification,
-    onParamChange } = useContext(PlanetContext);
-  // const someStr = '>';
-  // console.log(someStr);
+    onParamChange, numberValue } = useContext(PlanetContext);
+
   return (
     <header>
       <div>
@@ -15,6 +14,7 @@ export default function Header() {
             type="text"
             id="name"
             placeholder="Filtre por nome"
+            data-testid='name-filter'
             onChange={ onInputChange }
             value={ name }
           />
@@ -53,12 +53,15 @@ export default function Header() {
             name=""
             id="number_filter"
             placeholder="valor"
+            value={ numberValue }
+            data-testid='value-filter'
             onChange={ onNumberValueChange }
           />
         </label>
         <button
           type="button"
-          onClick={ () => filteredByClassification() }
+          onClick={ () => filteredByClassification }
+          data-testid='button-filter'
         >
           Filtrar
         </button>

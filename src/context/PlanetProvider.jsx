@@ -27,22 +27,9 @@ export default function PlanetProvider({ children }) {
     setParamValue(target.value);
   };
 
-  // const paramConversor = () => {
-  //   const MAIORQUE = '>';
-  //   const MENORQUE = '<';
-  //   const IGUALA = '===';
-  //   if (paramValue === 'maior que') return MAIORQUE;
-  //   if (paramValue === 'menor que') return MENORQUE;
-  //   if (paramValue === 'igual a') return IGUALA;
-  // };
-
   const filteredPlanets = (planets === ''
     ? planets
     : planets.filter((elem) => elem.name.includes(nameInput)));
-
-  // const filteredByClassification = filteredPlanets
-  //   .filter((elem2) => Number(elem2[classification]), paramConversor(),
-  //     Number(numberValue));
 
   const filteredByClassification = filteredPlanets.filter((planet) => {
     switch (paramValue) {
@@ -57,26 +44,25 @@ export default function PlanetProvider({ children }) {
     }
   });
 
-  // const filteredByClassification = paramConversor();
-
   const contextValue = {
     planets,
-    filterByName: {
-      name: nameInput,
-    },
     onInputChange,
     filteredPlanets,
-    filterByNumericValues: [
-      {
-        column: classification,
-        // comparison: 'maior que',
-        // value: '100000',
-      },
-    ],
     onClassifcChange,
     filteredByClassification,
     onNumberValueChange,
     onParamChange,
+    numberValue,
+    filterByName: {
+      name: nameInput,
+    },
+    filterByNumericValues: [
+      {
+        column: classification,
+        comparison: paramValue,
+        value: paramValue,
+      },
+    ],
   };
 
   return (
