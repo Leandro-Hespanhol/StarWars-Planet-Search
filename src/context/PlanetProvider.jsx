@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import PlanetContext from './PlanetContext';
 import FetchAPIPlanets from '../hooks/usePlanetHook';
@@ -6,7 +6,7 @@ import FetchAPIPlanets from '../hooks/usePlanetHook';
 export default function PlanetProvider({ children }) {
   const [planets, allPlanets, setAllPlanets] = FetchAPIPlanets();
 
-  const [nameInput, setNameInput] = useState([planets]);
+  const [nameInput, setNameInput] = useState([allPlanets]);
   const [classification, setClassification] = useState(
     ['population', 'orbital_period', 'diameter', 'rotation_period',
       'surface_water'],
@@ -22,9 +22,13 @@ export default function PlanetProvider({ children }) {
     value: 0,
   });
 
-  const onInputChange = ({ target }) => {
+  function onInputChange({ target }) {
     setNameInput(target.value);
-  };
+  }
+
+  useEffect(() => {
+    setAllPlanets(planets.filter((elem) => elem.name.includes(nameInput)));
+  }, [nameInput]);
 
   const onClassifcChange = ({ target }) => {
     const { value, name } = target;
@@ -71,7 +75,6 @@ export default function PlanetProvider({ children }) {
   const contextValue = {
     planets,
     onInputChange,
-    // filteredPlanets,
     onClassifcChange,
     filteredByClassification,
     classification,
