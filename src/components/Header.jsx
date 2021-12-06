@@ -14,7 +14,7 @@ export default function Header() {
             type="text"
             id="name"
             placeholder="Filtre por nome"
-            data-testid='name-filter'
+            data-testid="name-filter"
             onChange={ onInputChange }
             value={ name }
           />
@@ -54,14 +54,14 @@ export default function Header() {
             id="number_filter"
             placeholder="valor"
             value={ numberValue }
-            data-testid='value-filter'
+            data-testid="value-filter"
             onChange={ onNumberValueChange }
           />
         </label>
         <button
           type="button"
           onClick={ () => filteredByClassification }
-          data-testid='button-filter'
+          data-testid="button-filter"
         >
           Filtrar
         </button>
