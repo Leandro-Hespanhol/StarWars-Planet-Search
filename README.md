@@ -58,6 +58,14 @@ Nesse projeto, você será capaz de:
 
 Você vai desenvolver uma lista com filtros de planetas do universo de Star Wars usando **Context API e Hooks** para controlar os estados globais.
 
+**Segue link deploy do modelo do projeto:**
+
+https://trybe-starwars.surge.sh/
+
+### IMPORTANTE
+
+O modelo é para fins de ilustração, para desenvolver o projeto mandatoriamente siga os requisitos apontados no Readme.
+
 ---
 
 ## Desenvolvimento
