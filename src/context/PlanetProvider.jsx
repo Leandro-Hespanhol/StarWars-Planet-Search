@@ -73,8 +73,6 @@ export default function PlanetProvider({ children }) {
     filteredByClassification();
   }, [filterValues]);
 
-  // console.log('classific', filterValues);
-
   function deleteFilteredButton({ target }) {
     const deleteHere = filterValues.filterByNumericValues
       .find((elem) => elem.column === target.parentNode.parentNode.id);
@@ -87,17 +85,7 @@ export default function PlanetProvider({ children }) {
       ],
     });
     setAllPlanets(planets);
-
-    console.log('deleteHere', deleteHere);
-    // console.log('filteredByClassification', filteredByClassification);
-    console.log('allPlanets', allPlanets);
-    // console.log('filterByNumericValues', filterValues.filterByNumericValues);
-    // console.log('classification', classification);
   }
-
-  // useEffect(() => {
-  //   setAllPlanets(filteredByClassification);
-  // }, [filterValues]);
 
   function createDeleteButton() {
     return (
@@ -130,7 +118,6 @@ export default function PlanetProvider({ children }) {
         ...filterValues.filterByNumericValues, columnCompValue,
       ],
     });
-    // filteredByClassification();
     setClassification([
       ...classification.filter((columnClass) => columnClass !== columnCompValue.column),
     ]);
