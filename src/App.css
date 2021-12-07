@@ -1,18 +1,17 @@
-
 table {
-  font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  font-family: arial, sans-serif;
+  width: 100%
 }
 
 td, th {
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   text-align: left;
   padding: 8px;
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #ddd;
 }
 
 .App {
