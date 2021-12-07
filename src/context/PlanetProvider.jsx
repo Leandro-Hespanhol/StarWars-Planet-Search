@@ -22,12 +22,23 @@ export default function PlanetProvider({ children }) {
     value: 0,
   });
 
+  const [filterValues, setFilterValues] = useState({
+    filterByNumericValues: [],
+  });
+
   function onInputChange({ target }) {
     setNameInput(target.value);
   }
 
   useEffect(() => {
-    setAllPlanets(planets.filter((elem) => elem.name.includes(nameInput)));
+    setColumnCompValue({
+      ...columnCompValue,
+      column: classification[0],
+    });
+  }, [classification]);
+
+  useEffect(() => {
+    setAllPlanets(planets.filter((planetName) => planetName.name.includes(nameInput)));
   }, [nameInput]);
 
   const onClassifcChange = ({ target }) => {
@@ -38,26 +49,79 @@ export default function PlanetProvider({ children }) {
     });
   };
 
-  // const filteredPlanets = (allPlanets === ''
-  //   ? allPlanets
-  //   : allPlanets.filter((elem) => elem.name.includes(nameInput)));
+  function filteredByClassification() {
+    return filterValues.filterByNumericValues
+      .forEach(({ comparison, column, value }) => {
+        const filters = allPlanets
+          .filter((planet) => {
+            switch (comparison) {
+            case 'menor que':
+              return Number(planet[column]) < Number(value);
+            case 'maior que':
+              return Number(planet[column]) > Number(value);
+            case 'igual a':
+              return Number(planet[column]) === Number(value);
+            default:
+              return [];
+            }
+          });
+        setAllPlanets(filters);
+      });
+  }
 
-  const filteredByClassification = allPlanets.filter((planet) => {
-    switch (columnCompValue.comparison) {
-    case 'menor que':
-      return Number(planet[columnCompValue.column]) < Number(columnCompValue.value);
-    case 'maior que':
-      return Number(planet[columnCompValue.column]) > Number(columnCompValue.value);
-    case 'igual a':
-      return Number(planet[columnCompValue.column]) === Number(columnCompValue.value);
-    default:
-      return [];
-    }
-  });
+  useEffect(() => {
+    filteredByClassification();
+  }, [filterValues]);
 
-  const [filterValues, setFilterValues] = useState({
-    filterByNumericValues: [],
-  });
+  // console.log('classific', filterValues);
+
+  function deleteFilteredButton({ target }) {
+    const deleteHere = filterValues.filterByNumericValues
+      .find((elem) => elem.column === target.parentNode.parentNode.id);
+
+    setFilterValues({
+      ...filterValues,
+      filterByNumericValues: [
+        ...filterValues.filterByNumericValues
+          .filter((elem) => elem !== deleteHere),
+      ],
+    });
+    setAllPlanets(planets);
+
+    console.log('deleteHere', deleteHere);
+    // console.log('filteredByClassification', filteredByClassification);
+    console.log('allPlanets', allPlanets);
+    // console.log('filterByNumericValues', filterValues.filterByNumericValues);
+    // console.log('classification', classification);
+  }
+
+  // useEffect(() => {
+  //   setAllPlanets(filteredByClassification);
+  // }, [filterValues]);
+
+  function createDeleteButton() {
+    return (
+      <div>
+        {filterValues.filterByNumericValues.map((elem) => (
+          <div key={ elem.column } id={ elem.column }>
+            <label htmlFor="deleteButton" data-testid="filter">
+              <span>{elem.column}</span>
+              <span>{elem.comparison}</span>
+              <span>{elem.value}</span>
+              <button
+                type="button"
+                name="button"
+                id="deleteButton"
+                onClick={ (event) => deleteFilteredButton(event) }
+              >
+                X
+              </button>
+            </label>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   function onButtonFilter() {
     setFilterValues({
@@ -66,10 +130,12 @@ export default function PlanetProvider({ children }) {
         ...filterValues.filterByNumericValues, columnCompValue,
       ],
     });
-    setAllPlanets(filteredByClassification);
+    // filteredByClassification();
     setClassification([
-      ...classification.filter((elem) => elem !== columnCompValue.column),
+      ...classification.filter((columnClass) => columnClass !== columnCompValue.column),
     ]);
+
+    createDeleteButton();
   }
 
   const contextValue = {
@@ -86,6 +152,7 @@ export default function PlanetProvider({ children }) {
     setComparisson,
     filterValues,
     allPlanets,
+    createDeleteButton,
     filterByName: {
       name: nameInput,
     },

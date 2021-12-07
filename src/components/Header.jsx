@@ -3,13 +3,11 @@ import PlanetContext from '../context/PlanetContext';
 
 export default function Header() {
   const { onInputChange, filterByName: { name },
-    onClassifcChange,
-    columnCompValue, comparisson, filterValues,
+    onClassifcChange, createDeleteButton,
+    columnCompValue, comparisson,
     onButtonFilter, classification } = useContext(PlanetContext);
-  // var person=[{"name":"Billy","age":34}];
-  // var clothing={"name":"Karen","age":35};
-  // console.log(person.concat(clothing));
-  console.log('filterValues', filterValues);
+
+  // console.log('filterValues', columnCompValue);
 
   return (
     <header>
@@ -25,7 +23,12 @@ export default function Header() {
           />
         </label>
       </div>
-      <div>
+      <form
+        onSubmit={ (e) => {
+          e.preventDefault();
+          onButtonFilter();
+        } }
+      >
         <label htmlFor="classificationSelect">
           <select
             name="column"
@@ -62,12 +65,15 @@ export default function Header() {
           />
         </label>
         <button
-          type="button"
-          onClick={ () => onButtonFilter() }
+          type="submit"
+          // onClick={ () => onButtonFilter() }
           data-testid="button-filter"
         >
           Filtrar
         </button>
+      </form>
+      <div>
+        {createDeleteButton()}
       </div>
     </header>
   );
