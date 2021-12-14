@@ -316,7 +316,7 @@ describe('4 - Não utilize filtros repetidos', () => {
   });
 });
 
-describe.only('5 - Apague o filtro de valores numéricos e desfaça as filtragens dos dados da tabela ao clicar no ícone de `X` de um dos filtros', () => {
+describe('5 - Apague o filtro de valores numéricos e desfaça as filtragens dos dados da tabela ao clicar no ícone de `X` de um dos filtros', () => {
   beforeAll(mockFetch);
   beforeEach(cleanup);
 
@@ -368,7 +368,7 @@ describe.only('5 - Apague o filtro de valores numéricos e desfaça as filtragen
   });
 });
 
-describe('6 - Ordene as colunas de forma ascendente ou descendente', () => {
+describe.only('6 - Ordene as colunas de forma ascendente ou descendente', () => {
   beforeAll(mockFetch);
   beforeEach(cleanup);
 

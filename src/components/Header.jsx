@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import PlanetContext from '../context/PlanetContext';
+import columnArray from '../data/columnArray';
 
 export default function Header() {
   const { onInputChange, filterByName: { name },
-    onClassifcChange, createDeleteButton,
-    columnCompValue, comparisson,
+    onClassifcChange, createDeleteButton, onOrderFilterChange,
+    columnCompValue, comparisson, sortFilter, buttonSortByOrder, columnClassf,
     onButtonFilter, classification } = useContext(PlanetContext);
 
   // console.log('filterValues', columnCompValue);
@@ -49,7 +50,12 @@ export default function Header() {
             onChange={ onClassifcChange }
           >
             {comparisson.map((compOptions) => (
-              <option key={ compOptions }>{compOptions}</option>
+              <option
+                key={ compOptions }
+                onChange={ onClassifcChange }
+              >
+                {compOptions}
+              </option>
             ))}
           </select>
         </label>
@@ -66,7 +72,6 @@ export default function Header() {
         </label>
         <button
           type="submit"
-          // onClick={ () => onButtonFilter() }
           data-testid="button-filter"
         >
           Filtrar
@@ -74,6 +79,45 @@ export default function Header() {
       </form>
       <div>
         {createDeleteButton()}
+      </div>
+      <div>
+        <select
+          name="column"
+          data-testid="column-sort"
+          onChange={ onOrderFilterChange }
+          value={ columnClassf }
+        >
+          {columnArray.map((columns) => (
+            <option key={ columns }>{columns}</option>
+          ))}
+        </select>
+        <label htmlFor="ASC">
+          Ascendente
+          <input
+            type="radio"
+            name="orderBy"
+            id="ASC"
+            data-testid="column-sort-input-asc"
+            onChange={ sortFilter }
+          />
+        </label>
+        <label htmlFor="DESC">
+          Descendente
+          <input
+            type="radio"
+            name="orderBy"
+            id="DESC"
+            data-testid="column-sort-input-desc"
+            onChange={ sortFilter }
+          />
+        </label>
+        <button
+          type="button"
+          data-testid="column-sort-button"
+          onClick={ () => buttonSortByOrder() }
+        >
+          Ordenar
+        </button>
       </div>
     </header>
   );

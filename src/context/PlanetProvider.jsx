@@ -87,6 +87,62 @@ export default function PlanetProvider({ children }) {
     setAllPlanets(planets);
   }
 
+  const [orderBy, setOrderBy] = useState({
+    order: {
+      column: 'population',
+      sort: 'ASC',
+    },
+  });
+  // console.log('orderby', orderBy);
+
+  const [columnClassf, setColumnClassf] = useState('');
+
+  function onOrderFilterChange({ target }) {
+    setColumnClassf(target.value);
+    setOrderBy({
+      ...orderBy,
+      order: {
+        ...orderBy.order,
+        column: target.value,
+      },
+    });
+  }
+
+  const [ascDesc, setAscDesc] = useState('ASC');
+
+  function sortFilter({ target }) {
+    setAscDesc(target.id);
+    setOrderBy({
+      ...orderBy,
+      order: {
+        ...orderBy.order,
+        sort: target.id,
+      },
+    });
+    const planetsSorted = allPlanets.sort((a, b) => {
+
+      if (orderBy.order.sort === 'ASC') {
+        if (a[orderBy.order.column] > b[orderBy.order.column]) {
+          return 1;
+        }
+        return +'-1';
+      }
+      return +'-1';
+    });
+    setAllPlanets(planetsSorted);
+  }
+  console.log('orderby', orderBy.order);
+
+  function buttonSortByOrder() {
+    const planetsSorted = allPlanets
+      .sort((a, b) => a[orderBy.order.column] - b[orderBy.order.column]);
+      // if (a[orderBy.order.column] > b[orderBy.order.column]) {
+      //   return 1;
+      // }
+      // return +'-1';
+    setAllPlanets(planetsSorted);
+  }
+
   function createDeleteButton() {
     return (
       <div>
@@ -140,6 +196,11 @@ export default function PlanetProvider({ children }) {
     filterValues,
     allPlanets,
     createDeleteButton,
+    onOrderFilterChange,
+    columnClassf,
+    sortFilter,
+    ascDesc,
+    buttonSortByOrder,
     filterByName: {
       name: nameInput,
     },
