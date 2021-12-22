@@ -10,7 +10,7 @@ td, th {
 }
 
 tr:nth-child( even ) {
-  background-color: #ddd;
+  background-color: rgb(187, 187, 187);
 }
 
 .App {
