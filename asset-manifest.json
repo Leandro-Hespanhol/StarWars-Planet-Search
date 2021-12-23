@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/star-wars-planet-search/static/css/main.60921d2e.chunk.css",
-    "main.js": "/star-wars-planet-search/static/js/main.750c0c6d.chunk.js",
-    "main.js.map": "/star-wars-planet-search/static/js/main.750c0c6d.chunk.js.map",
-    "runtime-main.js": "/star-wars-planet-search/static/js/runtime-main.2983b150.js",
-    "runtime-main.js.map": "/star-wars-planet-search/static/js/runtime-main.2983b150.js.map",
-    "static/js/2.e6095c48.chunk.js": "/star-wars-planet-search/static/js/2.e6095c48.chunk.js",
-    "static/js/2.e6095c48.chunk.js.map": "/star-wars-planet-search/static/js/2.e6095c48.chunk.js.map",
-    "index.html": "/star-wars-planet-search/index.html",
-    "precache-manifest.65093d313e9f5e1177cffcb01870b6fe.js": "/star-wars-planet-search/precache-manifest.65093d313e9f5e1177cffcb01870b6fe.js",
-    "service-worker.js": "/star-wars-planet-search/service-worker.js",
-    "static/css/main.60921d2e.chunk.css.map": "/star-wars-planet-search/static/css/main.60921d2e.chunk.css.map",
-    "static/js/2.e6095c48.chunk.js.LICENSE.txt": "/star-wars-planet-search/static/js/2.e6095c48.chunk.js.LICENSE.txt"
+    "main.css": "/projects/star-wars-planet-search/static/css/main.60921d2e.chunk.css",
+    "main.js": "/projects/star-wars-planet-search/static/js/main.750c0c6d.chunk.js",
+    "main.js.map": "/projects/star-wars-planet-search/static/js/main.750c0c6d.chunk.js.map",
+    "runtime-main.js": "/projects/star-wars-planet-search/static/js/runtime-main.30681b88.js",
+    "runtime-main.js.map": "/projects/star-wars-planet-search/static/js/runtime-main.30681b88.js.map",
+    "static/js/2.e6095c48.chunk.js": "/projects/star-wars-planet-search/static/js/2.e6095c48.chunk.js",
+    "static/js/2.e6095c48.chunk.js.map": "/projects/star-wars-planet-search/static/js/2.e6095c48.chunk.js.map",
+    "index.html": "/projects/star-wars-planet-search/index.html",
+    "precache-manifest.ddff54aa9350d6172096bb38e106ad54.js": "/projects/star-wars-planet-search/precache-manifest.ddff54aa9350d6172096bb38e106ad54.js",
+    "service-worker.js": "/projects/star-wars-planet-search/service-worker.js",
+    "static/css/main.60921d2e.chunk.css.map": "/projects/star-wars-planet-search/static/css/main.60921d2e.chunk.css.map",
+    "static/js/2.e6095c48.chunk.js.LICENSE.txt": "/projects/star-wars-planet-search/static/js/2.e6095c48.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.2983b150.js",
+    "static/js/runtime-main.30681b88.js",
     "static/js/2.e6095c48.chunk.js",
     "static/css/main.60921d2e.chunk.css",
     "static/js/main.750c0c6d.chunk.js"
