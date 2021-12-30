@@ -1,5 +1,29 @@
-### Project TrybeWallet
+<h1 align="center">Welcome to TrybeWallet 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/Leandro-Hespanhol/TrybeWallet/graphs/commit-activity" target="_blank">
+    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+  </a>
+  <a href="https://github.com/Leandro-Hespanhol/TrybeWallet/blob/master/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/github/license/Leandro-Hespanhol/TrybeWallet" />
+  </a>
+</p>
 
+### ✨ [Demo](https://leandro-hespanhol.github.io/StarWars-Planet-Search/)
+
+## Install, Usage and tests
+
+```sh
+npm install
+```
+
+```sh
+npm start
+```
+
+```sh
+npm run test
+```
 ## Core Habilities: React, Hooks, Context API.
 
 ## Description: 
@@ -16,4 +40,17 @@ This project works on a several different filters using a starWars Planets API:
 4- As a fourth challenge, i was able to sort the order on ascendant or descendant way, based on a category.
 -Example: The user can sort the plannets based on an higher rotation period.
 
-## Link to the live project: https://leandro-hespanhol.github.io/StarWars-Planet-Search/
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+## About me
+
+👤 **Leandro Hespanhol**
+
+* Portfolio-Website: https://leandro-hespanhol.github.io/
+* GitHub: [@Leandro-Hespanhol](https://github.com/Leandro-Hespanhol)
+* LinkedIn: [@Leandro Hespanhol](https://www.linkedin.com/in/leandro-jos%C3%A9-ferreira-hespanhol-91b3a2136/)
+
+***
+Got some help with this README from [readme-md-generator](https://github.com/kefranabg/readme-md-generator) ❤️ 
