@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to TrybeWallet 👋</h1>
+<h1 align="center">Welcome to Star Wars Planet Search 🪐🪐🪐</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/Leandro-Hespanhol/TrybeWallet/graphs/commit-activity" target="_blank">
@@ -28,7 +28,7 @@ npm run test
 
 ## Description: 
 
-This project works on a several different filters using a starWars Planets API:
+This project works on a several different filters using a Star Wars Planets API:
 
 1- First filter works on-Input-Change and filters the name of the plannet. 
 
