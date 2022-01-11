@@ -133,9 +133,10 @@ export default function PlanetProvider({ children }) {
   }
 
   const [planetsOrderFilter, setPlanetsOrderFilter] = useState([]);
+  const [clickCounter, setClickCounter] = useState(0);
 
   function buttonSortByOrder() {
-    let planetsSorted = '';
+    let planetsSorted = [];
     if (orderBy.order.sort === 'ASC') {
       planetsSorted = allPlanets
         .sort((a, b) => a[orderBy.order.column] - b[orderBy.order.column]);
@@ -144,13 +145,15 @@ export default function PlanetProvider({ children }) {
       planetsSorted = allPlanets
         .sort((a, b) => b[orderBy.order.column] - a[orderBy.order.column]);
     }
-    // console.log(planetsSorted.map((a) => a));
+
     setPlanetsOrderFilter(planetsSorted);
+    setClickCounter(clickCounter + 1);
+    console.log('buttonSort', planetsOrderFilter);
   }
 
   useEffect(() => {
     setAllPlanets(planetsOrderFilter);
-  }, [planetsOrderFilter]);
+  }, [clickCounter]);
 
   function createDeleteButton() {
     return (
