@@ -13,44 +13,24 @@ tr:nth-child( even ) {
   background-color: rgb(187, 187, 187);
 }
 
-.App {
+.main-filter-div {
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.name-filter-div {
+  align-self: center;
+  padding-bottom: 20px;
+  /* border: 2px solid green; */
 }
 
-@media ( prefers-reduced-motion : no-preference ) {
-
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.input-name {
+  width: 300px;
+  flex-grow: 1;
 }
 
-.App-header {
-  align-items: center;
-  background-color: #282c34;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  justify-content: center;
-  min-height: 100vh;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+.category-filter-div {
+  /* border: 2px solid blue */
 }

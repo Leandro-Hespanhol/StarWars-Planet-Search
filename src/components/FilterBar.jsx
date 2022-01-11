@@ -9,12 +9,14 @@ export default function FilterBar() {
     onButtonFilter, classification } = useContext(PlanetContext);
 
   return (
-    <header>
-      <div>
+    <div className="main-filter-div">
+      <div className="name-filter-div">
+        <h1>Star Wars Planet Search</h1>
         <label htmlFor="name">
           <input
             type="text"
             id="name"
+            className="input-name"
             placeholder="Filtre por nome"
             data-testid="name-filter"
             onChange={ onInputChange }
@@ -22,59 +24,66 @@ export default function FilterBar() {
           />
         </label>
       </div>
-      <form
-        onSubmit={ (e) => {
-          e.preventDefault();
-          onButtonFilter();
-        } }
-      >
-        <label htmlFor="classificationSelect">
-          <select
-            name="column"
-            id="classificationSelect"
-            data-testid="column-filter"
-            onChange={ onClassifcChange }
-          >
-            {classification.map((classOptions) => (
-              <option key={ classOptions } value={ classOptions }>{classOptions}</option>
-            ))}
-          </select>
-        </label>
-        <label htmlFor="rangeSelector">
-          <select
-            name="comparison"
-            id="rangeSelector"
-            data-testid="comparison-filter"
-            onChange={ onClassifcChange }
-          >
-            {comparisson.map((compOptions) => (
-              <option
-                key={ compOptions }
-                onChange={ onClassifcChange }
-              >
-                {compOptions}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label htmlFor="number_filter">
-          <input
-            type="number"
-            name="value"
-            id="number_filter"
-            placeholder="valor"
-            value={ columnCompValue.value }
-            data-testid="value-filter"
-            onChange={ onClassifcChange }
-          />
-        </label>
-        <button
-          type="submit"
-          data-testid="button-filter"
+      <div className="category-filter-div">
+        <form
+          onSubmit={ (e) => {
+            e.preventDefault();
+            onButtonFilter();
+          } }
         >
-          Filtrar
-        </button>
-      </form>
+          <label htmlFor="classificationSelect">
+            <select
+              name="column"
+              id="classificationSelect"
+              data-testid="column-filter"
+              onChange={ onClassifcChange }
+            >
+              {classification.map((classOptions) => (
+                <option
+                  key={ classOptions }
+                  value={ classOptions }
+                >
+                  {classOptions}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label htmlFor="rangeSelector">
+            <select
+              name="comparison"
+              id="rangeSelector"
+              data-testid="comparison-filter"
+              onChange={ onClassifcChange }
+            >
+              {comparisson.map((compOptions) => (
+                <option
+                  key={ compOptions }
+                  onChange={ onClassifcChange }
+                >
+                  {compOptions}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label htmlFor="number_filter">
+            <input
+              type="number"
+              name="value"
+              id="number_filter"
+              placeholder="valor"
+              value={ columnCompValue.value }
+              data-testid="value-filter"
+              onChange={ onClassifcChange }
+            />
+          </label>
+          <button
+            type="submit"
+            data-testid="button-filter"
+          >
+            Filtrar
+          </button>
+        </form>
+      </div>
       <div>
         {createDeleteButton()}
       </div>
@@ -117,6 +126,6 @@ export default function FilterBar() {
           Ordenar
         </button>
       </div>
-    </header>
+    </div>
   );
 }
