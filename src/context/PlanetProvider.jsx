@@ -120,13 +120,26 @@ export default function PlanetProvider({ children }) {
       },
     });
     const planetsSorted = allPlanets.sort((a, b) => {
-      if (orderBy.order.sort === 'ASC') {
-        if (a[orderBy.order.column] >= b[orderBy.order.column]) {
-          return 1;
-        }
-        return +'-1';
+      const hold = orderBy.order.column;
+      // IM LEAVING THIS COMMENTS FOR FUTURE ANALISYS
+      // if (orderBy.order.sort === 'ASC') {
+      //   if (a[hold] > b[hold]) {
+      //     return a[hold] - b[hold];
+      //   }
+      //   if (a[hold] < b[hold]) {
+      //     return b[hold] - a[hold];
+      //   }
+      //   return 0;
+      // }
+      switch (hold) {
+      case 'ASC':
+        return a[hold] > b[hold] ? a[hold] - b[hold] : b[hold] - a[hold];
+      case 'DESC':
+        return a[hold] > b[hold] ? b[hold] - a[hold] : a[hold] - b[hold];
+      default:
+        return 0;
       }
-      return +'-1';
+      // return Number('-1');
     });
 
     setAllPlanets(planetsSorted);
@@ -148,7 +161,6 @@ export default function PlanetProvider({ children }) {
 
     setPlanetsOrderFilter(planetsSorted);
     setClickCounter(clickCounter + 1);
-    console.log('buttonSort', planetsOrderFilter);
   }
 
   useEffect(() => {
