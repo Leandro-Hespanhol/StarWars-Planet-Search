@@ -8,8 +8,8 @@ function FetchAPIPlanets() {
   useEffect(() => {
     async function fetchPlanets() {
       const { results } = await fetch(URL).then((resp) => resp.json());
-      setPlanets(results.sort((a, b) => ((a.name > b.name) ? 1 : Number('-1'))));
-      setAllPlanets(results.sort((a, b) => ((a.name > b.name) ? 1 : Number('-1'))));
+      setPlanets(results.sort((a, b) => ((a.name > b.name) ? 1 : +('-1'))));
+      setAllPlanets(results.sort((a, b) => ((a.name > b.name) ? 1 : +('-1'))));
     }
     fetchPlanets();
   }, []);

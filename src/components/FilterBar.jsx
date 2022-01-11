@@ -2,13 +2,11 @@ import React, { useContext } from 'react';
 import PlanetContext from '../context/PlanetContext';
 import columnArray from '../data/columnArray';
 
-export default function Header() {
+export default function FilterBar() {
   const { onInputChange, filterByName: { name },
     onClassifcChange, createDeleteButton, onOrderFilterChange,
     columnCompValue, comparisson, sortFilter, buttonSortByOrder, columnClassf,
     onButtonFilter, classification } = useContext(PlanetContext);
-
-  // console.log('filterValues', columnCompValue);
 
   return (
     <header>

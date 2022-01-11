@@ -85,6 +85,7 @@ export default function PlanetProvider({ children }) {
       ],
     });
     setAllPlanets(planets);
+    setClassification([...classification, target.parentNode.parentNode.id]);
   }
 
   const [orderBy, setOrderBy] = useState({
@@ -93,7 +94,6 @@ export default function PlanetProvider({ children }) {
       sort: 'ASC',
     },
   });
-  // console.log('orderby', orderBy);
 
   const [columnClassf, setColumnClassf] = useState('');
 
@@ -121,16 +121,16 @@ export default function PlanetProvider({ children }) {
     });
     const planetsSorted = allPlanets.sort((a, b) => {
       if (orderBy.order.sort === 'ASC') {
-        if (a[orderBy.order.column] > b[orderBy.order.column]) {
+        if (a[orderBy.order.column] >= b[orderBy.order.column]) {
           return 1;
         }
         return +'-1';
       }
       return +'-1';
     });
+
     setAllPlanets(planetsSorted);
   }
-  // console.log('orderby', orderBy.order);
 
   const [planetsOrderFilter, setPlanetsOrderFilter] = useState([]);
 
@@ -144,7 +144,7 @@ export default function PlanetProvider({ children }) {
       planetsSorted = allPlanets
         .sort((a, b) => b[orderBy.order.column] - a[orderBy.order.column]);
     }
-    console.log(planetsSorted.map((a) => a.population));
+    // console.log(planetsSorted.map((a) => a));
     setPlanetsOrderFilter(planetsSorted);
   }
 

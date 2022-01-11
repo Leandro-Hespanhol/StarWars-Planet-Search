@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import PlanetContext from '../context/PlanetContext';
-import Header from './Header';
+import FilterBar from './FilterBar';
 
 export default function Table() {
   const { allPlanets } = useContext(PlanetContext);
-  // console.log('a', allPlanets);
+
   return (
     <div>
-      <Header />
+      <FilterBar />
       <table>
         <thead>
           <tr>
