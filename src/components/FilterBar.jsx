@@ -25,6 +25,7 @@ export default function FilterBar() {
         </label>
       </div>
       <div className="category-filter-div">
+        <h3>Filtre por comparação</h3>
         <form
           onSubmit={ (e) => {
             e.preventDefault();
@@ -88,6 +89,7 @@ export default function FilterBar() {
         {createDeleteButton()}
       </div>
       <div>
+        <h3>Ordene baseado na categoria</h3>
         <select
           name="column"
           data-testid="column-sort"
