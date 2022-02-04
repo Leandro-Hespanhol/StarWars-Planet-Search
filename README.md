@@ -1,13 +1,4 @@
 <h1 align="center">Welcome to Star Wars Planet Search 🪐🪐🪐</h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
-  <a href="https://github.com/Leandro-Hespanhol/TrybeWallet/graphs/commit-activity" target="_blank">
-    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
-  </a>
-  <a href="https://github.com/Leandro-Hespanhol/TrybeWallet/blob/master/LICENSE" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/github/license/Leandro-Hespanhol/TrybeWallet" />
-  </a>
-</p>
 
 ### ✨ [Demo](https://leandro-hespanhol.github.io/StarWars-Planet-Search/)
 
