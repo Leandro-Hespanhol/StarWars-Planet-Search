@@ -17,7 +17,7 @@
 npm install
 npm start
 ```
-## Core Habilities: React, Hooks, Context API.
+## Core abilities: React, Hooks, Context API.
 
 ## Description: 
 
